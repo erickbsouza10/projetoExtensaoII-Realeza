@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "course": "ADS",
+    "semester": 2,
+    "subject": "Algoritmos",
+    "difficulty": "EASY",
+    "statement": "Qual estrutura é utilizada para repetir um bloco de código?",
+    "options": ["if", "for", "switch", "class"],
+    "correct": 1
+  },
+  {
+    "id": 2,
+    "course": "ADS",
+    "semester": 2,
+    "subject": "Banco de Dados",
+    "difficulty": "MEDIUM",
+    "statement": "Qual comando SQL é utilizado para consultar registros?",
+    "options": ["INSERT", "UPDATE", "SELECT", "DROP"],
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "course": "ADS",
+    "semester": 2,
+    "subject": "Banco de Dados",
+    "difficulty": "HARD",
+    "statement": "Qual forma normal elimina dependências transitivas?",
+    "options": ["1FN", "2FN", "3FN", "BCNF"],
+    "correct": 2
+  },
+  {
+    "id": 4,
+    "course": "Direito",
+    "semester": 1,
+    "subject": "Introdução ao Direito",
+    "difficulty": "EASY",
+    "statement": "Qual é uma das principais fontes formais do Direito?",
+    "options": ["Lei", "Opinião pessoal", "Costume individual", "Preferência"],
+    "correct": 0
+  }
+]

@@ -1,0 +1,322 @@
+.admin-shell {
+  height: 100dvh;
+  overflow-y: auto;
+  padding: 32px clamp(18px, 4vw, 64px);
+}
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #b4985440;
+}
+.admin-account {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+}
+.admin-account a,
+.admin-nav a {
+  color: #dfcfac;
+  text-decoration: none;
+}
+.admin-heading {
+  margin: 28px 0 20px;
+}
+.admin-heading > span {
+  color: #b89e62;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+.admin-heading h1 {
+  color: #e4c47c;
+  font-size: 34px;
+  margin: 8px 0;
+  font-weight: normal;
+}
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #b4985433;
+}
+.admin-nav a {
+  border: 1px solid #b4985440;
+  border-radius: 4px;
+  padding: 10px 16px;
+  background: #0b1416bf;
+}
+.admin-nav a.active {
+  border-color: #d5aa58;
+  color: #f0cc7a;
+  background: #946a2e33;
+}
+.admin-content {
+  margin-top: 24px;
+  max-width: 1500px;
+  margin-inline: auto;
+}
+.admin-content h2 {
+  color: #e4c47c;
+  font-weight: normal;
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+.admin-content h3 {
+  margin: 0 0 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  font-size: 19px;
+  color: #efdfba;
+}
+.admin-intro {
+  color: #bfb59c;
+  line-height: 1.5;
+  font-size: 13px;
+}
+.admin-panel {
+  background: linear-gradient(145deg, #1a211deb, #0b1214eb);
+  border: 1px solid #b4985445;
+  border-radius: 6px;
+  padding: 20px;
+  min-width: 0;
+  box-shadow: 0 8px 24px #0003;
+}
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-block: 24px;
+}
+.admin-dashboard a {
+  color: #bfb59c;
+  text-decoration: none;
+}
+.admin-dashboard a:hover {
+  border-color: #d5aa58;
+}
+.admin-dashboard strong {
+  display: block;
+  color: #e4c47c;
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+.admin-grid {
+  display: grid;
+  grid-template-columns: minmax(270px, 360px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.admin-form fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0;
+  display: grid;
+  gap: 16px;
+}
+.admin-form label,
+.admin-filters label {
+  display: grid;
+  gap: 7px;
+  color: #d5c499;
+  font-size: 13px;
+  min-width: 0;
+}
+.admin-shell input:not([type='checkbox']):not([type='radio']),
+.admin-shell select,
+.admin-shell textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #a38a5366;
+  border-radius: 4px;
+  background: #071014c4;
+  color: #f4ead5;
+  font: inherit;
+}
+.admin-shell select option {
+  background: #0d1518;
+}
+.admin-shell textarea {
+  resize: vertical;
+}
+.admin-shell .admin-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-shell input[type='checkbox'],
+.admin-shell input[type='radio'] {
+  accent-color: #d5aa58;
+}
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.admin-actions button {
+  font-size: 13px;
+}
+.admin-list {
+  display: grid;
+  gap: 12px;
+}
+.admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.admin-row p {
+  color: #bfb59c;
+  font-size: 13px;
+  margin: 6px 0 12px;
+}
+.admin-status {
+  display: inline-block;
+  border: 1px solid #b98c5e80;
+  color: #c5a282;
+  background: #b98c5e10;
+  border-radius: 20px;
+  padding: 3px 9px;
+  font-size: 11px;
+}
+.admin-status.active {
+  color: #95c9a9;
+  border-color: #61957580;
+  background: #61957515;
+}
+.admin-filters,
+.admin-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.admin-notice {
+  padding: 12px 16px;
+  border-radius: 4px;
+  border: 1px solid;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.admin-notice.error {
+  border-color: #b95e5e80;
+  color: #e7a09a;
+  background: #8f242426;
+}
+.admin-notice.success {
+  border-color: #61957580;
+  color: #95c9a9;
+  background: #61957515;
+}
+.admin-notice .link-real {
+  margin-left: 10px;
+  color: inherit;
+}
+.question-form {
+  margin-bottom: 24px;
+}
+.question-form .admin-fields {
+  margin-bottom: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.question-form .alternatives-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.admin-form .correct-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.correct-options legend {
+  margin-bottom: 10px;
+  color: #d5c499;
+  font-size: 13px;
+}
+.correct-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.question-filters {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.question-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+.question-meta > span:not(.admin-status) {
+  color: #bfb59c;
+}
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+  font-size: 13px;
+}
+@media (max-width: 800px) {
+  .admin-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .question-form .admin-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .question-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 500px) {
+  .admin-shell {
+    padding: 24px 16px;
+  }
+  .admin-header {
+    align-items: start;
+    gap: 12px;
+  }
+  .admin-account {
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: 8px;
+    max-width: 50%;
+  }
+  .admin-account > span {
+    width: 100%;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+  .admin-dashboard,
+  .question-form .admin-fields,
+  .admin-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .admin-row {
+    align-items: start;
+    flex-direction: column;
+  }
+  .admin-nav a {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  .admin-panel {
+    padding: 16px;
+  }
+  .admin-pagination {
+    gap: 8px;
+  }
+  .admin-pagination button {
+    padding: 8px;
+    font-size: 12px;
+  }
+}

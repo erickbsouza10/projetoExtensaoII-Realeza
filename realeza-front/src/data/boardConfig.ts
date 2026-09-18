@@ -10,13 +10,13 @@ export interface JogadorTabuleiro {
 export const boardConfig = {
   quantidadeCasas: 20,
   duracaoPasso: 420,
-  texturaCasa: "",
-  fundoTabuleiro: "",
-  imagemChegada: "",
+  texturaCasa: '',
+  fundoTabuleiro: '',
+  imagemChegada: '',
   casasEspeciais: [
-    { posicao: 5, nome: "Torre de vigia", simbolo: "♜" },
-    { posicao: 10, nome: "Santuário", simbolo: "✦" },
-    { posicao: 15, nome: "Portão real", simbolo: "⚑" },
+    { posicao: 5, nome: 'Torre de vigia', simbolo: '♜' },
+    { posicao: 10, nome: 'Santuário', simbolo: '✦' },
+    { posicao: 15, nome: 'Portão real', simbolo: '⚑' },
   ],
 };
 

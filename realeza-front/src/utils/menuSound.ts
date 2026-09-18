@@ -1,8 +1,8 @@
-import menuSom from "../assets/menu.mp3";
+import menuSom from '../assets/menu.mp3';
 
 // Keep the sound outside page components so navigation does not interrupt it.
 const audioMenu = new Audio(menuSom);
-audioMenu.preload = "auto";
+audioMenu.preload = 'auto';
 audioMenu.volume = 0.5;
 audioMenu.load();
 
@@ -12,11 +12,11 @@ let inicioSom = 0;
 let fonteAtual: AudioBufferSourceNode | null = null;
 
 try {
-  contexto = new AudioContext({ latencyHint: "interactive" });
+  contexto = new AudioContext({ latencyHint: 'interactive' });
   const contextoAudio = contexto;
   void fetch(menuSom)
     .then((response) => {
-      if (!response.ok) throw new Error("Menu audio unavailable");
+      if (!response.ok) throw new Error('Menu audio unavailable');
       return response.arrayBuffer();
     })
     .then((data) => contextoAudio.decodeAudioData(data))
@@ -39,8 +39,8 @@ try {
 export function tocarSomMenu() {
   try {
     if (contexto) {
-      if (contexto.state === "suspended") void contexto.resume().catch(() => {});
-      if (bufferMenu && contexto.state !== "closed") {
+      if (contexto.state === 'suspended') void contexto.resume().catch(() => {});
+      if (bufferMenu && contexto.state !== 'closed') {
         audioMenu.pause();
         fonteAtual?.stop();
         const fonte = contexto.createBufferSource();

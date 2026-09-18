@@ -7,12 +7,18 @@
   padding: 24px;
   background: #050403;
   color: #f4ead5;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, 'Times New Roman', serif;
   text-align: center;
 }
 
-.preloader h1 { margin: 0 0 28px; font-size: 32px; }
-.preloader progress { width: min(240px, 100%); accent-color: #d5aa58; }
+.preloader h1 {
+  margin: 0 0 28px;
+  font-size: 32px;
+}
+.preloader progress {
+  width: min(240px, 100%);
+  accent-color: #d5aa58;
+}
 .preloader button {
   padding: 12px 20px;
   border: 1px solid #d5aa58;
@@ -30,7 +36,13 @@
   border-radius: 50%;
   animation: preloader-spin 0.8s linear infinite;
 }
-@keyframes preloader-spin { to { transform: rotate(360deg); } }
+@keyframes preloader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .preloader-spinner { animation: none; }
+  .preloader-spinner {
+    animation: none;
+  }
 }
