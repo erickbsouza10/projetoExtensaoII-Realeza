@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { perguntas, type Dificuldade } from "../../data/gameData";
 import { imagensDados } from "../../data/imageAssets";
 import { boardConfig, type JogadorTabuleiro } from "../../data/boardConfig";
 import Tabuleiro from "../../components/tabuleiro/Tabuleiro";
 import "./Sala.css";
+import { useNavigate } from "react-router-dom";
 
 const jogadoresIniciais: JogadorTabuleiro[] = [
   {
@@ -21,6 +22,10 @@ const jogadoresIniciais: JogadorTabuleiro[] = [
 ];
 
 function Sala() {
+  const navigate = useNavigate();
+  const prazo = useRef(0);
+  const respostaBloqueada = useRef(false);
+  const [tempo, setTempo] = useState(10000);
   const animacaoRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultadoRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const respostaRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -50,8 +55,19 @@ function Sala() {
   const [respondida, setRespondida] = useState(false);
 
   const [resultadoResposta, setResultadoResposta] = useState<
-    "acertou" | "errou" | null
+    "acertou" | "errou" | "esgotou" | null
   >(null);
+
+  const esgotar = useEffectEvent(() => responder(-1));
+  useEffect(() => {
+    if (!perguntaAtual || respostaBloqueada.current) return;
+    const intervalo = setInterval(() => {
+      const restante = Math.max(0, prazo.current - Date.now());
+      setTempo(restante);
+      if (restante === 0) esgotar();
+    }, 50);
+    return () => clearInterval(intervalo);
+  }, [perguntaAtual, respondida]);
 
   // Simulação enquanto não temos backend
   const curso = "ADS";
@@ -130,6 +146,9 @@ function Sala() {
     const perguntaSorteada =
       disponiveis[indiceAleatorio];
 
+    prazo.current = Date.now() + 10000;
+    respostaBloqueada.current = false;
+    setTempo(10000);
     setPerguntaAtual(perguntaSorteada);
   }
 
@@ -185,16 +204,19 @@ function jogarDado() {
 }
 
   function responder(indiceAlternativa: number) {
-    if (!perguntaAtual || respondida) {
+    if (!perguntaAtual || respostaBloqueada.current) {
       return;
     }
 
+    respostaBloqueada.current = true;
+    const esgotou = indiceAlternativa === -1 || Date.now() >= prazo.current;
+    if (esgotou) setTempo(0);
     setRespondida(true);
 
     const acertou =
-      indiceAlternativa === perguntaAtual.correta;
+      !esgotou && indiceAlternativa === perguntaAtual.correta;
 
-    setResultadoResposta(acertou ? "acertou" : "errou");
+    setResultadoResposta(esgotou ? "esgotou" : acertou ? "acertou" : "errou");
 
     // Close the question before moving so the entire journey stays visible.
     respostaRef.current = setTimeout(() => {
@@ -316,6 +338,7 @@ function jogarDado() {
           <div className="curso">
             <strong>{curso}</strong>
             <small>{periodo}º período</small>
+            <button className="btn-abandonar" onClick={() => navigate("/home")}>Abandonar partida</button>
           </div>
         </header>
 
@@ -431,6 +454,7 @@ function jogarDado() {
 
               {/* Jogador que precisa responder */}
 
+              <div className="pergunta-cabecalho">
               <div className="desafiante">
                 <span>
                   ⚔ DESAFIO PARA
@@ -445,6 +469,11 @@ function jogarDado() {
                 </strong>
               </div>
 
+              <div className="cronometro" role="timer" aria-label={`${Math.ceil(tempo / 1000)} segundos restantes`}>
+                <div className="cronometro-pizza" style={{ background: `conic-gradient(${tempo > 6000 ? "#7ddc87" : tempo > 3000 ? "#e6bd59" : "#ed7373"} ${tempo / 10000 * 360}deg, #ffffff12 0deg)` }}><span>{Math.ceil(tempo / 1000)}s</span></div>
+                <small>Tempo restante</small>
+              </div>
+              </div>
               <div className="pergunta-info">
                 <span className="disciplina">
                   {
@@ -506,7 +535,7 @@ function jogarDado() {
                     </>
                   ) : (
                     <>
-                      ✕ Resposta errada!
+                      {resultadoResposta === "esgotou" ? "⌛ Tempo esgotado!" : "✕ Resposta errada!"}
                       Nenhuma casa conquistada.
                     </>
                   )}

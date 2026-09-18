@@ -90,3 +90,16 @@ body { margin: 0; }
   .alternativas button { min-height: 40px; padding: 6px 10px; }.resultado-resposta, .recompensa { margin-top: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .dado-rolando { animation: none; } }
+
+.btn-abandonar { align-self: flex-end; padding: 6px 9px; border: 1px solid #b86a5b80; border-radius: 4px; background: #6c302426; color: #e4ab9e; font: 12px Georgia, serif; cursor: pointer; }
+.btn-abandonar:hover { background: #6c302466; }
+.btn-abandonar:focus-visible, .alternativas button:focus-visible { outline: 2px solid #f0cc7a; outline-offset: 3px; }
+.pergunta-cabecalho { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid #d2a55040; }
+.pergunta-cabecalho .desafiante { flex: 1; align-items: flex-start; margin: 0; padding: 0; border: 0; }
+.cronometro { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
+.cronometro-pizza { width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; box-shadow: 0 0 0 3px #ffffff0c; }
+.cronometro-pizza span { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #19120c; color: #fff5df; font-size: 16px; font-weight: bold; font-variant-numeric: tabular-nums; }
+.cronometro small { color: #b8ad98; font-size: 10px; }
+.resultado-resposta.esgotou { color: #e77979; border-color: #be3c3c80; background: #961e1e26; }
+.alternativas button:disabled { cursor: default; opacity: .65; }
+@media (max-height: 500px) and (orientation: landscape) { .pergunta-cabecalho { margin-bottom: 10px; padding-bottom: 8px; } .cronometro-pizza { width: 52px; height: 52px; } }
